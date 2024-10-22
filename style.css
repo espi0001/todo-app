@@ -2,12 +2,12 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
-    text-align: center;
+
     line-height: 1.5;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 800px;
     margin: 50px auto;
     /* Centrerer containeren på skærmen og giver top/bund margin */
     padding: 20px;
@@ -20,23 +20,27 @@ body {
         color: #5c7bb8;
         font-size: 3rem;
         text-transform: uppercase;
+        text-align: center;
     }
 
     #dato {
         font-size: 0.8rem;
+        text-align: center;
     }
 }
 
 .input-section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
+    margin: 30px 0 30px 0;
+    gap: 20px;
 }
 
 
 input {
     padding: 10px;
     margin: 10px;
-    width: calc(100% - 40px);
+    width: calc(110% - 40px);
     /* Bredde af inputfeltet, der tager hensyn til margin */
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -44,15 +48,15 @@ input {
 
 button {
     padding: 10px 20px;
-    /* Indvendig margin for knapperne */
-
-    margin: 10px;
     background-color: #5c7bb8;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    /* Markør ændres til en hånd når man hover over knappen */
+}
+
+#addTaskBtn {
+    margin: 10px;
 }
 
 button:hover {
@@ -63,6 +67,20 @@ button:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    margin-top: 30px;
+
+    h2 {
+        color: #5c7bb8;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    @media (width < 480px) {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
 
 ul {
@@ -73,10 +91,12 @@ ul {
 li {
     padding: 10px;
     /* Indvendig margin for hvert listeelement */
-    background-color: #f9f9f9;
+    background: #f9f9f9;
     margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+    align-items: center;
     border: 1px solid #ddd;
     border-radius: 5px;
 }

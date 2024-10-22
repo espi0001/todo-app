@@ -1,13 +1,12 @@
 // Når dokumentet er indlæst (DOM er klar), bliver koden udført
 document.addEventListener("DOMContentLoaded", (event) => {
-  //   to do liste
-  const taskInput = document.getElementById("taskInput"); // Inputfeltet til opgavebeskrivelsen
-  const quantityInput = document.getElementById("quantityInput"); // Inputfeltet til antal (hvis relevant)
+  const taskInput = document.getElementById("taskInput");
+  const quantityInput = document.getElementById("quantityInput");
 
-  const addTaskBtn = document.getElementById("addTaskBtn"); // Knappen til at tilføje en opgave
+  const addTaskBtn = document.getElementById("addTaskBtn");
 
-  const todoList = document.getElementById("todoList"); // Ul-elementet til ikke-udførte opgaver
-  const doneList = document.getElementById("doneList"); // Ul-elementet til udførte opgaver
+  const todoList = document.getElementById("todoList");
+  const doneList = document.getElementById("doneList");
 
   // Hent eksisterende opgaver fra localStorage, eller start med en tom liste hvis der ikke er nogen
   let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
@@ -44,12 +43,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
     doneList.innerHTML = ""; // Rydder den nuværende done-liste i UI'et
     tasks.forEach((task) => {
       const taskItem = document.createElement("li"); // Opretter et nyt listeelement for hver opgave
-      taskItem.innerHTML = `${task.task} ${task.quantity ? ` - QTY: ${task.quantity}` : ""}`; // Viser opgavebeskrivelse og evt. antal
+
+      taskItem.innerHTML = `${task.task} ${task.quantity ? ` - (${task.quantity})` : ""}`; // Viser opgavebeskrivelse og evt. antal
+
       const doneButton = document.createElement("button"); // Opretter en knap til at markere opgaven som færdig/ufærdig
-      doneButton.textContent = task.done ? "Fortryd" : "Udført"; // Ændrer teksten på knappen afhængigt af opgavens status
+      doneButton.textContent = task.done ? "Cancel" : "Done"; // Ændrer teksten på knappen afhængigt af opgavens status
       doneButton.addEventListener("click", () => toggleTaskDone(task.id)); // Tilføjer klikfunktion til at markere opgaven som færdig/ufærdig
+
       const deleteButton = document.createElement("button"); // Opretter en knap til at slette opgaven
-      deleteButton.textContent = "Slet"; // Tekst på slet-knappen
+      deleteButton.textContent = "Clear"; // Tekst på slet-knappen
       deleteButton.addEventListener("click", () => deleteTask(task.id)); // Tilføjer klikfunktion til at slette opgaven
       taskItem.appendChild(doneButton); // Tilføjer knappen til opgaveelementet
       taskItem.appendChild(deleteButton); // Tilføjer slet-knappen til opgaveelementet
