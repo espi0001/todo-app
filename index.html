@@ -5,31 +5,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo App</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link til CSS-filen, som vil style appen -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container">
-        <h1>ToDo App</h1> <!-- Hovedtitel for appen -->
+    <main>
+        <section class="container">
+            <h1>To Do List</h1>
+            <p id="dato"></p>
 
-        <!-- Input-sektionen hvor brugeren kan tilføje nye opgaver -->
-        <div class="input-section">
-            <input type="text" id="taskInput" placeholder="Tilføj en opgave"> <!-- Inputfelt til opgavebeskrivelsen -->
-            <input type="number" id="quantityInput" placeholder="Antal (hvis indkøb)">
-            <!-- Inputfelt til antal hvis opgaven er et indkøb -->
-            <button id="addTaskBtn">Tilføj opgave</button> <!-- Knappen der tilføjer en opgave -->
-        </div>
+            <!-- Input-sektionen hvor brugeren kan tilføje nye opgaver -->
+            <div class="input-section">
+                <input type="text" id="taskInput" placeholder="Add a task">
+                <!-- Inputfelt til opgavebeskrivelsen -->
+                <input type="number" id="quantityInput" placeholder="Quantity">
+                <!-- Inputfelt til antal hvis opgaven er et indkøb -->
+                <button id="addTaskBtn">Add</button>
+            </div>
 
-        <!-- Lister til opgaver -->
-        <h2>ToDo Liste</h2>
-        <ul id="todoList"></ul> <!-- Liste til opgaver, der endnu ikke er færdige -->
+            <!-- Lister til opgaver -->
+            <article class="opgaver">
+                <div>
+                    <h2>To do</h2>
+                    <ul id="todoList"></ul>
+                </div>
+                <div>
+                    <h2>Done</h2>
+                    <ul id="doneList"></ul>
+                </div>
+            </article>
+        </section>
 
-        <h2>Færdig Liste</h2>
-        <ul id="doneList"></ul> <!-- Liste til opgaver, der er markeret som færdige -->
-    </div>
 
-    <!-- Script-filen, der håndterer funktionaliteten i appen -->
+    </main>
     <script src="script.js"></script>
+    <script>
+        // Opret et nyt Date objekt
+        const dagensDato = new Date();
+
+        // Ugedage på dansk
+        const ugedage = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+        // Hent dagens navn
+        const dagensNavn = ugedage[dagensDato.getDay()]; // getDay() returnerer ugedag (0 = Søndag, 1 = Mandag osv.)
+
+        // Hent dag, måned og år
+        const dag = dagensDato.getDate(); // Dagen på måneden (1-31)
+        const måned = dagensDato.getMonth() + 1; // Måneden (0-11), derfor +1 for korrekt måned (1-12)
+        const år = dagensDato.getFullYear(); // Det fulde årstal (f.eks. 2024)
+
+        // Formater datoen som "DagensNavn, dd/mm/yyyy"
+        const formateretDato = dagensNavn + " " + dag + "." + måned + "." + år;
+
+        // Vis datoen i HTML-elementet med id "dato"
+        document.getElementById("dato").textContent = formateretDato;
+    </script>
 </body>
 
 </html>

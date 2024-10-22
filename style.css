@@ -1,62 +1,72 @@
 body {
     font-family: Arial, sans-serif;
-    /* Skifter standard skrifttype til Arial */
     background-color: #f4f4f9;
-    /* Baggrundsfarve */
     color: #333;
-    /* Tekstfarve */
     text-align: center;
-    /* Centrering af tekst */
+    line-height: 1.5;
 }
 
 .container {
     max-width: 600px;
-    /* Begrenser bredden af indholdet */
     margin: 50px auto;
     /* Centrerer containeren på skærmen og giver top/bund margin */
     padding: 20px;
     background: #fff;
-    /* Baggrundsfarve for containeren */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    /* Let skygge for at give dybde */
+    border-radius: 20px;
+    border: #333 solid 1px;
+
+    h1 {
+        color: #5c7bb8;
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+
+    #dato {
+        font-size: 0.8rem;
+    }
 }
+
+.input-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 
 input {
     padding: 10px;
-    /* Indvendig margin for inputfelterne */
     margin: 10px;
-    /* Udvendig margin for inputfelterne */
     width: calc(100% - 40px);
     /* Bredde af inputfeltet, der tager hensyn til margin */
     border: 1px solid #ddd;
-    /* Tynd kant omkring inputfelterne */
     border-radius: 5px;
-    /* Runde hjørner */
 }
 
 button {
     padding: 10px 20px;
     /* Indvendig margin for knapperne */
-    background-color: #5cb85c;
-    /* Grøn baggrundsfarve */
+
+    margin: 10px;
+    background-color: #5c7bb8;
     color: white;
-    /* Hvid tekstfarve */
     border: none;
-    /* Ingen kant */
     border-radius: 5px;
-    /* Runde hjørner */
     cursor: pointer;
     /* Markør ændres til en hånd når man hover over knappen */
 }
 
 button:hover {
-    background-color: #4cae4c;
-    /* Ændrer baggrundsfarven, når man hover over knappen */
+    background-color: #5c7bb8;
+}
+
+.opgaver {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 ul {
     list-style: none;
-    /* Fjerner punkttegn foran listepunkterne */
     padding: 0;
 }
 
@@ -64,17 +74,11 @@ li {
     padding: 10px;
     /* Indvendig margin for hvert listeelement */
     background-color: #f9f9f9;
-    /* Lys baggrundsfarve */
     margin: 10px 0;
-    /* Vertikal margin mellem listeelementerne */
     display: flex;
-    /* Flex display for at kunne placere knapperne ved siden af teksten */
     justify-content: space-between;
-    /* Placerer tekst til venstre og knapper til højre */
     border: 1px solid #ddd;
-    /* Let kant rundt om hver opgave */
     border-radius: 5px;
-    /* Runde hjørner */
 }
 
 .completed {

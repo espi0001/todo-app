@@ -1,9 +1,11 @@
 // Når dokumentet er indlæst (DOM er klar), bliver koden udført
 document.addEventListener("DOMContentLoaded", (event) => {
-  // Definerer de elementer vi vil arbejde med
+  //   to do liste
   const taskInput = document.getElementById("taskInput"); // Inputfeltet til opgavebeskrivelsen
   const quantityInput = document.getElementById("quantityInput"); // Inputfeltet til antal (hvis relevant)
+
   const addTaskBtn = document.getElementById("addTaskBtn"); // Knappen til at tilføje en opgave
+
   const todoList = document.getElementById("todoList"); // Ul-elementet til ikke-udførte opgaver
   const doneList = document.getElementById("doneList"); // Ul-elementet til udførte opgaver
 
@@ -42,7 +44,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     doneList.innerHTML = ""; // Rydder den nuværende done-liste i UI'et
     tasks.forEach((task) => {
       const taskItem = document.createElement("li"); // Opretter et nyt listeelement for hver opgave
-      taskItem.innerHTML = `${task.task} ${task.quantity ? ` - Antal: ${task.quantity}` : ""}`; // Viser opgavebeskrivelse og evt. antal
+      taskItem.innerHTML = `${task.task} ${task.quantity ? ` - QTY: ${task.quantity}` : ""}`; // Viser opgavebeskrivelse og evt. antal
       const doneButton = document.createElement("button"); // Opretter en knap til at markere opgaven som færdig/ufærdig
       doneButton.textContent = task.done ? "Fortryd" : "Udført"; // Ændrer teksten på knappen afhængigt af opgavens status
       doneButton.addEventListener("click", () => toggleTaskDone(task.id)); // Tilføjer klikfunktion til at markere opgaven som færdig/ufærdig
