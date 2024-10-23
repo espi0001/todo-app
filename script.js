@@ -43,11 +43,6 @@ function renderTasks() {
     // Gennemgår hver opgave i tasks-arrayet
     const listItem = document.createElement("li"); // Opretter en ny liste element
 
-    // Styling på liste elementet
-    // listItem.style.display = "grid"; // Anvender grid layout
-    // listItem.style.alignItems = "right"; // Justerer placeringen
-    // listItem.style.gridTemplateColumns = "auto 1fr auto auto"; // Definerer grid-kolonnerne
-
     const doneButton = document.createElement("button"); // Opretter en knap til at markere opgaven som færdig/ufærdig
     doneButton.textContent = ""; // Teksten på knappen
     doneButton.classList.add(task.isCompleted ? "undo" : "done"); // Tilføjer en klasse baseret på om opgaven er færdig eller ej
@@ -64,16 +59,19 @@ function renderTasks() {
 
     const taskText = document.createElement("span"); // Opretter en span til opgavebeskrivelsen
     taskText.innerHTML = task.taskDescription; // Viser opgavebeskrivelsen
+
+    // Tilføjer "completed" klassen hvis opgaven er færdig
+    if (task.isCompleted) {
+      taskText.classList.add("completed"); // Tilføjer klassen til span
+    }
+
     listItem.appendChild(taskText); // Tilføjer opgavebeskrivelsen til liste elementet
 
     // Hvis der er angivet en mængde, vises den her
     if (task.quantity) {
       const quantityText = document.createElement("span"); // Opretter en span til antallet
-      quantityText.innerHTML = `${task.quantity}x`; // Viser antallet med 'x'
+      quantityText.innerHTML = `${task.quantity}x `; // Viser antallet med 'x'
       listItem.appendChild(quantityText); // Tilføjer antallet til liste elementet
-
-      // Styling på antallet
-      // quantityText.style.marginLeft = "10px"; // Tilføjer en margin til venstre for antallet
     }
 
     // Slet knap til at fjerne opgaver
@@ -106,6 +104,7 @@ function deleteTask(taskId) {
 function doneTask(taskId) {
   const taskDone = tasks.find((task) => task.id === taskId); // Finder opgaven der skal markeres som færdig
   taskDone.isCompleted = true; // Marker opgaven som færdig
+
   console.log("taskDone", taskDone); // Viser det i konsollen
 
   saveTasks(); // Gemmer opgaverne i localStorage efter opdatering

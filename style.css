@@ -27,6 +27,7 @@ body {
         font-size: 3rem;
         text-transform: uppercase;
         text-align: center;
+        font-weight: bold;
     }
 
     #dato {
@@ -103,40 +104,19 @@ li {
 
 .completed {
     text-decoration: line-through;
-    /* Streger teksten over, når en opgave er markeret som færdig */
     color: #888;
-    /* Ændrer farven på færdige opgaver til grå */
+    font-style: italic;
+
 }
 
-
-
-/* button {
-    padding: 10px 20px;
-    background-color: var(--bg-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-        background-color: var(--teal-color);
-    }
-}
-
-#addTaskBtn {
-    margin: 10px;
-} */
 
 button {
-    /* font-size: 16px; */
     padding: 10px 20px;
     background-color: var(--bg-color);
     color: white;
     border: none;
     border-radius: 5px;
     transition: all 0.3s ease;
-    /* padding: 0.50rem 1.65rem; */
     cursor: pointer;
 
     &:hover {
@@ -160,37 +140,34 @@ li button:hover {
 
 
 
-li button.done {
-    background-image: url('placeholder.svg');
+li button.done,
+li button.undo {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     background-color: var(--white);
     border-radius: 50%;
-    /* border: 2px solid #83AD48; */
+
     width: 30px;
     padding: 10px;
     height: 30px;
 }
 
-li button.done:hover {
-    background-image: url('check-circle.svg');
-    background-color: var(--sky-blue);
+
+li button.done {
+    background-image: url('placeholder.svg');
+
+    &:hover {
+        background-image: url('check-circle.svg');
+
+    }
 }
 
 li button.undo {
     background-image: url('check-circle.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    background-color: var(--white);
-}
 
-li button.undo:hover {
-    background-image: url('minus-circle.svg');
-    background-color: var(--sky-blue);
+    &:hover {
+        background-image: url('minus-circle.svg');
+
+    }
 }
