@@ -171,3 +171,11 @@ li button.undo {
 
     }
 }
+
+footer {
+    text-align: center;
+    padding: 10px;
+    color: white;
+    margin: 60px 0 20px 0;
+    font-style: italic;
+}
